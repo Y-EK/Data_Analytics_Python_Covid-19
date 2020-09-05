@@ -12,7 +12,7 @@ def delete_patientID_duplicates(data):
 def get_corr_state_from_postcode(data):
     df_patient_res = data[['patient_id', 'postcode', 'date_of_birth']]
     # On supprime les espaces avant et après 
-    df_patient_res['postcode'] = data['postcode'].str.strip()
+    df_patient_res['postcode'] = df_patient_res['postcode'].str.strip()
     # On remplace les tabulation par 0
     df_patient_res['postcode'] = df_patient_res['postcode'].replace('\t', 0)
     # On remplace les espaces vides par 0
