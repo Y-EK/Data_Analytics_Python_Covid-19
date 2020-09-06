@@ -47,6 +47,9 @@ def detect_duplicates(df_data):
         # Construction d'une colonne state en se basant sur un référentiel 
         # 
         df_patient_dup = df_data.loc[:,['patient_id', 'postcode', 'date_of_birth']]
+        #
+        # On commence par changer le type de la colonne 'postcode' en string
+        df_patient_dup.loc[:,'postcode']= df_patient_dup['postcode'].astype(str) 
         # On supprime les espaces avant et après 
         df_patient_dup.loc[:,'postcode'] = df_patient_dup['postcode'].str.strip()
         # On remplace les tabulation par 0
@@ -82,6 +85,9 @@ def detect_duplicates(df_data):
         # On applique la fonction delete_patientID_duplicates
         # pour supprimer les duplications selon la colonne patient_id
         df_patient_dedup = delete_patientID_duplicates(df_patient_dup)
+        
+        # On reordonne ci-dessous les colonnes
+        df_patient_dedup = df_patient_dedup.loc[:,['patient_id', 'postcode', 'state', 'date_of_birth', 'age']]
         
         return df_patient_dedup
     
