@@ -29,6 +29,26 @@ def test_delete_duplicates():
     
     assert_frame_equal(left=df_expected.reset_index(drop=True), right=df_result.reset_index(drop=True),
                        check_dtype=False)
+
+
+def test_correct_age():
+        
+    df = pd.DataFrame([
+        [100064, 4208, 'QLD', 19810905.0, np.nan],
+        [100215, 6107, 'WA', 19061018.0, ''],
+        [100363, 3029, 'VIC', 19030606.0, 32]
+        ], columns = ['patient_id', 'postcode', 'state', 'date_of_birth', 'age'])
+    
+    df_result = detect_duplicates(df)
+    
+    df_expected = pd.DataFrame([
+        [100064, 4208, 'QLD', datetime.datetime.strptime('1981-09-05', '%Y-%m-%d'), 39],
+        [100215, 6107, 'WA', datetime.datetime.strptime('1906-10-18', '%Y-%m-%d') , 114],
+        [100363, 3029, 'VIC', datetime.datetime.strptime('1903-06-06', '%Y-%m-%d'), 117]
+        ], columns = ['patient_id', 'postcode', 'state', 'date_of_birth', 'age'])
+    
+    assert_frame_equal(left=df_expected.reset_index(drop=True), right=df_result.reset_index(drop=True),
+                       check_dtype=False)                   
                        
         
         
