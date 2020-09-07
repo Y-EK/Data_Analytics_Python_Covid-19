@@ -37,6 +37,9 @@ def get_final_ds(data_patient, data_pcr):
                            on='patient_id', 
                            how='left')
     
+    # Introduction d'une clonne pour les categories d'âge
+    #df_final_ds
+    
     return df_final_ds
     
     
