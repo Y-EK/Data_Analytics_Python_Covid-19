@@ -31,7 +31,7 @@ def test_delete_duplicates():
                        check_dtype=False)
 
 
-def test_correct_age():
+def test_get_corrected_age():
         
     df = pd.DataFrame([
         [100064, 4208, 'QLD', 19810905.0, np.nan],
@@ -49,8 +49,25 @@ def test_correct_age():
     
     assert_frame_equal(left=df_expected.reset_index(drop=True), right=df_result.reset_index(drop=True),
                        check_dtype=False)  
+    
+def test_get_corrected_age_wdob():
+        
+    df = pd.DataFrame([
+        [378167, 2428, 'NSW', np.nan, 31],
+        [427069, 6000, 'WA', 19451796, 75],
+        ], columns = ['patient_id', 'postcode', 'state', 'date_of_birth', 'age'])
+    
+    df_result = detect_duplicates(df)
+    
+    df_expected = pd.DataFrame([
+        [378167, 2428, 'NSW', np.datetime64('NaT'), np.nan],
+        [427069, 6000, 'WA', np.datetime64('NaT'), np.nan],
+        ], columns = ['patient_id', 'postcode', 'state', 'date_of_birth', 'age'])
+    
+    assert_frame_equal(left=df_expected.reset_index(drop=True), right=df_result.reset_index(drop=True),
+                       check_dtype=False)    
 
-def test_correct_state(): 
+def test_get_corrected_state(): 
     
     df = pd.DataFrame([
         [100390, 6155, 'qld', 19160912, 104],
