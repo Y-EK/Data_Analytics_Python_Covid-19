@@ -65,8 +65,8 @@ def test_get_corrected_age_wdob():
         ], columns = ['patient_id', 'postcode', 'state', 'date_of_birth', 'age'])
     
     assert_frame_equal(left=df_expected.reset_index(drop=True), right=df_result.reset_index(drop=True),
-                       check_dtype=False)    
-
+                       check_dtype=False)   
+    
 def test_get_corrected_state(): 
     
     df = pd.DataFrame([
@@ -81,6 +81,27 @@ def test_get_corrected_state():
         [100390, 6155, 'WA', datetime.datetime.strptime('1916-09-12', '%Y-%m-%d'), 104],
         [100559, 2400, 'NSW', datetime.datetime.strptime('1957-02-20', '%Y-%m-%d') , 63],
         [100901, 5333, 'SA', datetime.datetime.strptime('1975-02-07', '%Y-%m-%d'), 45]
+        ], columns = ['patient_id', 'postcode', 'state', 'date_of_birth', 'age'])
+    
+    assert_frame_equal(left=df_expected.reset_index(drop=True), right=df_result.reset_index(drop=True),
+                       check_dtype=False)    
+
+def test_get_corrected_state_wpc(): 
+    
+    df = pd.DataFrame([
+        [100126, 199, 'ACT', 19181210, 102],
+        [100390, np.nan, 'WA', 19160912, 104],
+        [100559, None, 'NSW', 19570220, 63],
+        [100901, 10000, 'SA', 19750207, 45]
+        ], columns = ['patient_id', 'postcode', 'state', 'date_of_birth', 'age'])
+    
+    df_result = detect_duplicates(df)
+    
+    df_expected = pd.DataFrame([
+        [100126, 199, np.nan, datetime.datetime.strptime('1918-12-10', '%Y-%m-%d'), 102],
+        [100390, 0, np.nan, datetime.datetime.strptime('1916-09-12', '%Y-%m-%d'), 104],
+        [100559, 0, np.nan, datetime.datetime.strptime('1957-02-20', '%Y-%m-%d'), 63],
+        [100901, 10000, np.nan, datetime.datetime.strptime('1975-02-07', '%Y-%m-%d'), 45]
         ], columns = ['patient_id', 'postcode', 'state', 'date_of_birth', 'age'])
     
     assert_frame_equal(left=df_expected.reset_index(drop=True), right=df_result.reset_index(drop=True),
