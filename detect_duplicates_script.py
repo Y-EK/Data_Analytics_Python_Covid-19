@@ -65,6 +65,7 @@ def detect_duplicates(df_data):
         df_patient_dup.loc[:,'postcode'] = df_patient_dup['postcode'].astype(float) # (int)
         #
         # Traitement sur la colonne postcode 
+        # On remplace les valeurs n'appartenants pas à l'intervalle des vaeurs valides par 0
         df_patient_dup.loc[df_patient_dup['postcode']>9020, 'postcode'] = 0
         df_patient_dup.loc[df_patient_dup['postcode']<200, 'postcode'] = 0
         #
