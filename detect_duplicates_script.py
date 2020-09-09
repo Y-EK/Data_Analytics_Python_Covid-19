@@ -58,10 +58,11 @@ def detect_duplicates(df_data):
         df_patient_dup.loc[:,'postcode'] = df_patient_dup['postcode'].replace(" ", 0)
         # On remplace les NaN par 0
         df_patient_dup.loc[:,'postcode'] = df_patient_dup['postcode'].replace(np.nan, 0)
+        # 
         # On remplace les chaines de caractères par 0
         df_patient_dup.loc[:,'postcode'] = df_patient_dup['postcode'].replace(['.*[a-zA-Z]'], 0, regex=True , inplace=False)
         # On transforme le type des valeurs prises par postcode en int 
-        df_patient_dup.loc[:,'postcode'] = df_patient_dup['postcode'].astype(int)
+        df_patient_dup.loc[:,'postcode'] = df_patient_dup['postcode'].astype(float)
         # On ajoute un DataFrame pour le référentiel des codes postaux en Australie
         referential_PC = pd.read_csv("data_post_codes.csv", sep = ',')
         # merge 
@@ -69,7 +70,8 @@ def detect_duplicates(df_data):
                                       referential_PC[['postcode', 'state']],
                                       on='postcode', 
                                       how='left')
-        
+        # 
+        #df_patient_dup.loc[:,'postcode'] = df_patient_dup['postcode'].replace(0, None)
         # Calcul de l'age des patients
         # On remplace les NaN (+ valeurs manquantes ...) par une date de naissance erronée
         df_patient_dup.loc[:,'date_of_birth'] = df_patient_dup['date_of_birth'].replace(np.nan, 99999999)
