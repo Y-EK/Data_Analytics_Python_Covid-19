@@ -7,6 +7,8 @@ def delete_patientID_duplicates(data):
     df_sorted = data.sort_values(by=['patient_id', 'date_of_birth', 'postcode'], na_position='first')
     # suppression des doublons selon le champ 'patient_id'
     df_dedup_patient_ID = df_sorted.drop_duplicates(subset=['patient_id'], keep='last')
+    # suppression des valeurs manquantes au niveau du champ patient_id
+    df_dedup_patient_ID = df_dedup_patient_ID[df_dedup_patient_ID['patient_id'].notnull()]
     return df_dedup_patient_ID
 
 #def get_corr_state_from_postcode(data):
