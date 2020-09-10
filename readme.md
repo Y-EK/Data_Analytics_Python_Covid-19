@@ -1,18 +1,37 @@
-# Libraries 
+# Librairies :
 
-- librairies importée dans les différents modules et notebooks:
+Ci-dessous les librairies importée dans les différents modules et notebooks:
+Pour l'installation de ces librairies on utilise PyPI.
 
-pandas 
+- pandas & numpy: pour la manipulation de données.
 
-numpy 
+```python
+pip install pandas
+``` 
 
-datetime
+```python
+pip install numpy
+```
 
-matplotlib
+- datetime: pour manipulation des dates. 
 
-seaborn
+```python
+pip install DateTime
+```
 
-- Pour pouvoir lancer les tests unitaire, nous utliserons 
+- matplotlib & seaborn: pour la visualisation de données.
+
+```python
+pip install matplotlib
+```
+ 
+```python
+pip install seaborn
+```
+
+- Ainsi, pour pouvoir lancer les tests unitaires, nous utliserons 
 la librarie Pytest. 
-Pour l'installer on utilise PyPI:
+
+```python
 pip install -U pytest
+```
