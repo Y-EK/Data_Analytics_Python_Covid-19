@@ -1,7 +1,6 @@
 # Nous rappelons ici la commande pour installer 
 # le package python pytest :
 # pip install -U pytest
-# pip install pandas -U
 
 import pandas as pd
 import numpy as np
