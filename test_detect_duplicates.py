@@ -8,6 +8,8 @@ from pandas._testing import assert_frame_equal
 from detect_duplicates_script import detect_duplicates
 import datetime
 
+path_referential = './data_post_codes.csv';
+
 def test_delete_duplicates():
     
     df = pd.DataFrame([
@@ -16,7 +18,7 @@ def test_delete_duplicates():
         [771155, '4210', 'nsss', np.nan, 32]
         ], columns = ['patient_id', 'postcode', 'state', 'date_of_birth', 'age'])
     
-    df_result = detect_duplicates(df)
+    df_result = detect_duplicates(df, path_referential)
     
     df_expected = pd.DataFrame([
         [771155, 4210, 'QLD', datetime.datetime.strptime('1979-01-08', '%Y-%m-%d'), 41]
@@ -39,7 +41,7 @@ def test_get_corrected_age():
         [100363, 3029, 'VIC', 19030606.0, 32]
         ], columns = ['patient_id', 'postcode', 'state', 'date_of_birth', 'age'])
     
-    df_result = detect_duplicates(df)
+    df_result = detect_duplicates(df, path_referential)
     
     df_expected = pd.DataFrame([
         [100064, 4208, 'QLD', datetime.datetime.strptime('1981-09-05', '%Y-%m-%d'), 39],
@@ -57,7 +59,7 @@ def test_get_corrected_age_wdob():
         [427069, 6000, 'WA', 19451796, 75],
         ], columns = ['patient_id', 'postcode', 'state', 'date_of_birth', 'age'])
     
-    df_result = detect_duplicates(df)
+    df_result = detect_duplicates(df, path_referential)
     
     df_expected = pd.DataFrame([
         [378167, 2428, 'NSW', np.datetime64('NaT'), np.nan],
@@ -75,7 +77,7 @@ def test_get_corrected_state():
         [100901, 5333, np.nan, 19750207, 45]
         ], columns = ['patient_id', 'postcode', 'state', 'date_of_birth', 'age'])
     
-    df_result = detect_duplicates(df)
+    df_result = detect_duplicates(df, path_referential)
     
     df_expected = pd.DataFrame([
         [100390, 6155, 'WA', datetime.datetime.strptime('1916-09-12', '%Y-%m-%d'), 104],
@@ -95,7 +97,7 @@ def test_get_corrected_state_wpc():
         [100901, 10000, 'SA', 19750207, 45]
         ], columns = ['patient_id', 'postcode', 'state', 'date_of_birth', 'age'])
     
-    df_result = detect_duplicates(df)
+    df_result = detect_duplicates(df, path_referential)
     
     df_expected = pd.DataFrame([
         [100126, 0, np.nan, datetime.datetime.strptime('1918-12-10', '%Y-%m-%d'), 102],

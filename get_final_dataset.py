@@ -23,10 +23,10 @@ def get_cleaned_df_pcr(data):
     return df_pcr_cleaned
     
 
-def get_final_ds(data_patient, data_pcr):
+def get_final_ds(data_patient, data_pcr, path_referential):
     
     # data frame obtenu après suppression des duplications du jeu de donnée patient
-    df_patient_dedup = script_dd.detect_duplicates(data_patient)
+    df_patient_dedup = script_dd.detect_duplicates(data_patient, path_referential)
     
     # data frame obtenu après un processus de data cleaning appliqué au jeu de donnée
     # sur les données relatifs aux contamination par le Covid19

@@ -41,7 +41,7 @@ def from_dob_to_age(born):
     return today.year - born.dt.year - ((today.month, today.day) < (born.dt.month.any(), born.dt.day.any()))
 
 
-def detect_duplicates(df_data):
+def detect_duplicates(df_data, path_referential):
     if (len(df_data) != 0):
         
         # Construction d'une colonne state en se basant sur un référentiel 
@@ -70,7 +70,8 @@ def detect_duplicates(df_data):
         df_patient_dup.loc[df_patient_dup['postcode']<200, 'postcode'] = 0
         #
         # On ajoute un DataFrame pour le référentiel des codes postaux en Australie
-        referential_PC = pd.read_csv("data_post_codes.csv", sep = ',') # definir comme paramètre de la fonction
+        # path_referential = './data_post_codes.csv'
+        referential_PC = pd.read_csv(path_referential, sep = ',') # definir comme paramètre de la fonction
         #
         #
         #referential_PC['state'].replace(to_replace = np.nan,
