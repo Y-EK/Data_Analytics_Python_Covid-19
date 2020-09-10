@@ -83,6 +83,10 @@ def detect_duplicates(df_data, path_referential):
                                       on='postcode', 
                                       how='left')
         # 
+        df_patient_dup['state'].replace(to_replace = np.nan,
+                                        value ="UNKNOWN",
+                                        inplace=True)
+        # 
         #df_patient_dup.loc[:,'postcode'] = df_patient_dup['postcode'].replace(0, None)
         # Calcul de l'age des patients
         # On remplace les NaN (+ valeurs manquantes ...) par une date de naissance erronée
