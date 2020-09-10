@@ -100,10 +100,10 @@ def test_get_corrected_state_wpc():
     df_result = detect_duplicates(df, path_referential)
     
     df_expected = pd.DataFrame([
-        [100126, 0, np.nan, datetime.datetime.strptime('1918-12-10', '%Y-%m-%d'), 102],
-        [100390, 0, np.nan, datetime.datetime.strptime('1916-09-12', '%Y-%m-%d'), 104],
-        [100559, 0, np.nan, datetime.datetime.strptime('1957-02-20', '%Y-%m-%d'), 63],
-        [100901, 0, np.nan, datetime.datetime.strptime('1975-02-07', '%Y-%m-%d'), 45]
+        [100126, 0, "UNKNOWN", datetime.datetime.strptime('1918-12-10', '%Y-%m-%d'), 102],
+        [100390, 0, "UNKNOWN", datetime.datetime.strptime('1916-09-12', '%Y-%m-%d'), 104],
+        [100559, 0, "UNKNOWN", datetime.datetime.strptime('1957-02-20', '%Y-%m-%d'), 63],
+        [100901, 0, "UNKNOWN", datetime.datetime.strptime('1975-02-07', '%Y-%m-%d'), 45]
         ], columns = ['patient_id', 'postcode', 'state', 'date_of_birth', 'age'])
     
     assert_frame_equal(left=df_expected.reset_index(drop=True), right=df_result.reset_index(drop=True),
