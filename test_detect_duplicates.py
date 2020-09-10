@@ -99,7 +99,7 @@ def test_get_corrected_age_wdob():
                        check_dtype=False)   
     
 # Dans le test ci-dessous, on vérifie que notre fonction
-# associe le nom de la région lorsqu'un code postale correct est fournit
+# associe le nom de la région lorsqu'un code postale correct est fournit.
 def test_get_corrected_state(): 
     
     df = pd.DataFrame([
