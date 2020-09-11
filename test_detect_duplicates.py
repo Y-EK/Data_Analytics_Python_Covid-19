@@ -8,7 +8,7 @@ from pandas._testing import assert_frame_equal
 from detect_duplicates_script import detect_duplicates
 import datetime
 
-# chemin absolut du fichier csv utilisé comme référentiel des codes postaux
+# chemin relatif du fichier csv utilisé comme référentiel des codes postaux
 path_referential = './data_post_codes.csv';
 
 
