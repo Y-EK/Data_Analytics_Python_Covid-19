@@ -14,7 +14,7 @@ df_pcr = pd.read_sql('select * from test', con=con)
 con.close()
 ```
 
-# Réfentiel pour les codes postaux en Australie
+# Référentiel pour les codes postaux en Australie
 
 Ce document (en format csv) est téléchargeable sur le site https://data.gov.au/. 
 - Lien direct : https://data.gov.au/dataset/ds-brisbane-85e262dc-9dfe-46e9-87a8-f9f92f6a7780/distribution/dist-brisbane-f84ed0a2-b3f0-4cc8-bd28-8987e67039ec/details?q=
