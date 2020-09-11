@@ -4,6 +4,7 @@ import datetime
 from getting_started import *
 import detect_duplicates_script as script_dd
 
+# Dans cette fonction on corrige les anomalies de la colonne 'pcr'
 def get_cleaned_df_pcr(data):
     df_pcr_cleaned = df_pcr.copy()
     # On commence par changer le type de la colonne 'postcode' en string
@@ -23,12 +24,13 @@ def get_cleaned_df_pcr(data):
     return df_pcr_cleaned
     
 
+# Dans cette fonction on finalise notre processus de nettoyage de données. 
 def get_final_ds(data_patient, data_pcr, path_referential):
     
     # data frame obtenu après suppression des duplications du jeu de donnée patient
     df_patient_dedup = script_dd.detect_duplicates(data_patient, path_referential)
     
-    # data frame obtenu après un processus de data cleaning appliqué au jeu de donnée
+    # data frame obtenu après un processus de data cleaning appliqué au jeu de données
     # sur les données relatifs aux contamination par le Covid19
     df_cleaned_pcr = get_cleaned_df_pcr(data_pcr)
     # On fusionne les dataframes de patients (dédupliquée) avec celle des résultats des test du Covid19
