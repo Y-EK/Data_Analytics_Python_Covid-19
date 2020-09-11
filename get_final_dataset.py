@@ -47,6 +47,8 @@ def get_final_ds(data_patient, data_pcr, path_referential):
                               & df_final_ds['date_of_birth'].notnull() 
                               & df_final_ds['postcode'].notnull() 
                               & df_final_ds['postcode'] != 0]
+    # Supprimer les lignes avec des valeurs inconnues au niveau de 'state'
+    df_final_ds = df_final_ds[df_final_ds['state'] != "UNKNOWN"]
     
     return df_final_ds
     
