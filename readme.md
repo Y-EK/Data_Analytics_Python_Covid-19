@@ -65,7 +65,7 @@ pip install pandas
 pip install numpy
 ```
 
-- Datetime: pour manipulation des dates. 
+- Datetime: pour la manipulation des dates. 
 
 ```python
 pip install DateTime
