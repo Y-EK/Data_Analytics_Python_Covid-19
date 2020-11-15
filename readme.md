@@ -1,7 +1,7 @@
 # Base de données  
 
 Dans ce projet, nous utilisons une base de données sqlite 'data.db'. 
-Rappelons ci-dessous le code Python cervant à extraire les tables avec Pandas.
+Rappelons ci-dessous le code Python servant à extraire les tables avec Pandas.
 
 ```python
 import pandas as pd
